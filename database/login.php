@@ -4,12 +4,11 @@
     session_start();
 
     if($_POST){
-        $password = $_POST["password"]; 
         $db = new DB();
-        $user = $db->userVerification($_POST["email"], $password); 
+        $user = $db->userVerification($_POST["email"]); 
         
         if ($user) {
-            if ($user->password == $password) {
+            if (password_verify($_POST["password"], $user->password)) {
                 $_SESSION["loggedIn"] = true;
                 $_SESSION["userID"] = $user->id;
                 $_SESSION["userName"] = $user->name;

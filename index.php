@@ -69,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="card card-widget">
                   <div class="card-header">
                     <div class="user-block">
-                      <span class="admin_name"><a href="#"><?php echo $blog->name?></a></span><br>
+                      <span class="admin_name"><a href="#"><?php echo $blog->name ?></a></span><br>
                       <span><?php echo $blog->created_at ?></span>
                     </div>
                     <!-- /.user-block -->

@@ -16,14 +16,14 @@
         public function index() {
             $statement = $this->pdo->prepare("SELECT p.title, p.content, p.image, p.created_at, u.name 
             FROM posts as p 
-            INNER JOIN users as u
+            LEFT JOIN users as u
             ON p.author_id = u.id");
             if ($statement->execute()) {
                 return $statement->fetchall(PDO::FETCH_CLASS);
             }
         }
 
-        public function userVerification($email, $password) {
+        public function userVerification($email) {
             $statement = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
             $statement->bindParam(":email" , $email);
 
