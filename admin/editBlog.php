@@ -3,12 +3,12 @@
     if ($_SESSION) {
         if ($_SESSION["loggedIn"]) {
             require_once "../database/DB.php";
+            $_SESSION["token"] = md5(time()."hello");
             $db = new DB();
             $blog = $db->editBlog($_GET["id"]);
         }
     } else {
-        echo "Fail Authenticaion";
-        die();
+        header("location: login.php");
     }
 ?>
 
@@ -39,6 +39,7 @@
   </div>
 
   <form action="../database/editBlog.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
     <input type="hidden" name="id" value="<?php echo $blog->id ?>">
     <div class="form-group">
       <input type="text" name="title" class="form-control" placeholder="Title" value="<?php echo $blog->title ?>">

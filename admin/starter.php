@@ -3,7 +3,7 @@
   require_once "../database/DB.php";
 
   if (!$_SESSION["loggedIn"]) {
-    header("location:login.html");
+    header("location:login.php");
   } else {
     $userName = $_SESSION["userName"];
     $userID = $_SESSION["userID"];
@@ -88,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <a href="createBlog.html" class="btn btn-success"><span>+</span> What is happened on today?</a>
+            <a href="createBlog.php" class="btn btn-success"><span>+</span> What is happened on today?</a>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

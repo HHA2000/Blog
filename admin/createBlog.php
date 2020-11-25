@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if ($_SESSION) {
+      if ($_SESSION["loggedIn"]) {
+          $_SESSION["token"] = md5(time()."hello");
+        }
+    } else {
+        header("location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +35,7 @@
   </div>
 
   <form action="../database/storeBlog.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" value="<?php echo $_SESSION["token"] ?>" name="token">
     <div class="form-group">
       <input type="text" name="title" class="form-control" placeholder="Title">
     </div>

@@ -2,5 +2,5 @@
     session_start();
     session_destroy();
     $_SESSION = [];
-    header("location:../admin/login.html");
+    header("location:../admin/login.php");
 ?>

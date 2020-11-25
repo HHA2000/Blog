@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    $_SESSION["token"] = md5(time()."hello");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +26,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="login.html"><b>Blog</b></a>
+    <a href="login.php"><b>Blog</b></a>
   </div>
 
   <div class="card">
@@ -29,6 +34,7 @@
       <p class="login-box-msg">Register a new membership</p>
 
       <form action="../database/storeUser.php" method="post">
+        <input type="hidden" name="token" value="<?php echo $_SESSION["token"] ?>">
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="name" placeholder="Name">
           <div class="input-group-append">
@@ -64,7 +70,7 @@
         </div>
       </form>
 
-      <a href="login.html" class="text-center">I already have a membership</a>
+      <a href="login.php" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
